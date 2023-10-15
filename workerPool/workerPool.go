@@ -2,6 +2,7 @@ package workerPool
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"sync"
 
@@ -117,11 +118,14 @@ func (w *WorkerPool) Close() error {
 		return err
 	}
 
+	fmt.Println("WORKER POOL STARTING CLOSIng")
 	w.cancel()
 
 	w.workers.Close()
 
 	err = w.state.Close()
+
+	fmt.Println("worker_pool closed")
 
 	return err
 }

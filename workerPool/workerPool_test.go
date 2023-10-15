@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-	"time"
 )
 
 func TestWorkerPoolInit(t *testing.T) {
@@ -25,8 +24,6 @@ func TestWorkerPoolInit(t *testing.T) {
 			}
 
 			work.SendTask(func() {})
-
-			time.Sleep(time.Second * 2)
 
 			err = work.Close()
 			if err != nil {
